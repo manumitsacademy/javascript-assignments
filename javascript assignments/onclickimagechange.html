@@ -1,0 +1,31 @@
+<html>
+	<style>
+		#d1{
+			width:300px;
+			height:200px;	
+			background-image:url("");
+			background-repeat: no-repeat;
+			background-size:cover;
+			border:2px solid;
+		}
+	</style>
+	<body>
+		<div id="d1" onclick="abc()"></div>
+		<script>
+			var images=["https://cache.desktopnexus.com/thumbseg/1613/1613533-bigthumbnail.jpg",
+			"https://images.all-free-download.com/images/graphiclarge/burn_baby_burn_515725.jpg",
+			"https://image.freepik.com/free-photo/twilight-landscape-color-full-blue-sky-river_44353-354.jpg"
+			]
+			var i=0;
+			var mydiv=document.getElementById("d1");
+			mydiv.style.backgroundImage='url("'+images[0]+'")';
+			function abc(){
+				i=i+1;
+				mydiv.style.backgroundImage='url("'+images[i]+'")';
+				if(i===2){
+					i=-1;
+				}
+			}
+		</script>
+	</body>
+</html>

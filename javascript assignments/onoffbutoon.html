@@ -1,0 +1,43 @@
+<html>
+	<style>
+		#a{
+			width:150px;
+			height:150px;
+			border:2px solid black;
+			margin-bottom: 20px;
+		}
+	</style>
+	<body>
+		<div id="a"></div>
+		<button id="b" onclick="abc()">on</button>
+		<script>
+			var x=document.getElementById("a");
+			var y=document.getElementById("b");
+			var m=JSON.parse(localStorage.getItem("anything"));
+			if(localStorage.getItem("anything")){
+			x.style.backgroundColor=m.xcol;
+			y.innerHTML=m.ycol;
+			}
+			function abc(){
+				if(x.style.backgroundColor==="green"){
+					x.style.backgroundColor="red";
+					y.innerHTML="on";
+					var sow={
+						"xcol":x.style.backgroundColor,
+						"ycol":y.innerHTML
+					}
+					localStorage.setItem("anything",JSON.stringify(sow));
+				}
+				else{
+					x.style.backgroundColor="green"
+					y.innerHTML="off";
+					var sow={
+						"xcol":x.style.backgroundColor,
+						"ycol":y.innerHTML
+					}
+					localStorage.setItem("anything",JSON.stringify(sow));
+				}
+			}
+		</script>
+	</body>
+</html>

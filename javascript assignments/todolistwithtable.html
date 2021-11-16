@@ -1,0 +1,170 @@
+<html>
+	<style>
+		#a{
+			margin-left:20px;
+		}
+		body{
+			background-color:violet;
+		}
+	</style>
+	<body>
+		<h1>Add Students</h1>
+		Full Name:<input id="c" type="text">
+		Contact No:<input id="c1" type="text">
+		Email Id:<input id="c2" type="text">
+		<button id="a" onclick="Addstudent()">Add Student</button>
+		<button id="a1" onclick="Savestudent()">Save Student</button>
+		<button id="small" onclick="Ascending()">Asc</button>
+		<button id="large" onclick="Decending()">Dsc</button><br>
+		Search:<input id="search" onkeyup="searchcontact()">
+		<table border=2 id="b">
+		</table>
+		<script>
+			var ar=[];
+			var x=document.getElementById("a");
+			var x1=document.getElementById("a1");
+			var y=document.getElementById("b");
+			var y1=document.getElementById("c");
+			var y2=document.getElementById("c1");
+			var y3=document.getElementById("c2");
+			var ascen=document.getElementById("small");
+			var decen=document.getElementById("large");
+			var searchbox=document.getElementById("search");
+			var trs = document.getElementsByTagName("tr");
+			
+			x1.style.display="none";
+			if(localStorage.getItem("value")){
+				ar=JSON.parse(localStorage.getItem("value"));
+				add();
+			}
+			searchbox.onkeyup=function searchcontact(){
+			console.log(trs)
+				for(i=1;i<=trs.length-1;i++){
+					if(ar[i-1].name.startsWith(searchbox.value)){
+							trs[i].style.display="";
+					}
+					else{
+							trs[i].style.display="none";
+					}
+				}
+			}
+			function Addstudent(){
+				var obj={
+					"name": y1.value,
+					"contact": y2.value,
+					"email": y3.value
+					
+				}
+				ar.push(obj);
+				add();
+				localStorage.setItem("value",JSON.stringify(ar));
+			}
+			function add(){
+				y.innerHTML="";
+				var header=document.createElement("tr");
+				var header1=document.createElement("th");
+				var header2=document.createElement("th");
+				var header3=document.createElement("th");
+				var header4=document.createElement("th");
+				var header5=document.createElement("th");
+				header1.innerHTML="Name";
+				header2.innerHTML="Contact";
+				header3.innerHTML="Email";
+				header4.innerHTML="Delete";
+				header5.innerHTML="Edit";
+				header.appendChild(header1);
+				header.appendChild(header2);
+				header.appendChild(header3);
+				header.appendChild(header4);
+				header.appendChild(header5);
+				y.appendChild(header);
+				ar.forEach(function(a,i){				
+				var row=document.createElement("tr");
+				var column1=document.createElement("td");
+				var column2=document.createElement("td");
+				var column3=document.createElement("td");
+				var column4=document.createElement("td");
+				var column5=document.createElement("td");
+				var btn=document.createElement("button");
+				var btn1=document.createElement("button");
+				btn.innerHTML="Delete";
+				btn1.innerHTML="Edit";
+				column4.appendChild(btn);
+				column5.appendChild(btn1);
+				var data1=a.name;
+				var data2=a.contact;
+				var data3=a.email;
+				column1.innerHTML=data1;
+				column2.innerHTML=data2;
+				column3.innerHTML=data3;
+				row.appendChild(column1);
+				row.appendChild(column2);
+				row.appendChild(column3);
+				row.appendChild(column4);
+				row.appendChild(column5);
+				y.appendChild(row);
+				btn.onclick=function(){
+					ar.splice(i,1);
+					add();
+					localStorage.setItem("value",JSON.stringify(ar));
+				}
+				btn1.onclick=function(){
+					x.style.display="none";
+					x1.style.display="block";
+					y1.value=a.name;
+					y2.value=a.contact;
+					y3.value=a.email;
+					x1.onclick=function Savestudent(){
+					var obj1={
+						"name": y1.value,
+						"contact": y2.value,
+						"email": y3.value
+						}
+						ar[i]=obj1;
+						add();
+						localStorage.setItem("value",JSON.stringify(ar));
+						x.style.display="block";
+						x1.style.display="none";
+						y1.value="";
+						y2.value="";
+						y3.value="";
+					}
+				}
+				ascen.onclick=function Ascending(){
+						ar.sort(function(a,b){
+							var s=a.name.toUpperCase();
+							var t=b.name.toUpperCase();
+							if(s<t){
+								return -1;
+							}
+							if(s>t){
+								return 1;
+							}
+							return 0;
+						});
+						add();
+						ascen.style.display="none";
+						decen.style.display="inline-block";
+					}
+				decen.onclick=function Decending(){
+						ar.sort(function(a,b){
+							var s=a.name.toUpperCase();
+							var t=b.name.toUpperCase();
+							if(s<t){
+								return 1;
+							}
+							if(s>t){
+								return -1;
+							}
+							return 0;
+						});
+						add();
+						ascen.style.display="inline-block";
+						decen.style.display="none";
+					}
+				});
+			}
+			
+		</script>
+	</body>
+</html>	

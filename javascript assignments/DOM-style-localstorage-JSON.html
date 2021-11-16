@@ -1,0 +1,109 @@
+<html>
+	<style>
+		.strike{
+			text-decoration:line-through;
+		}
+	</style>
+	<body>
+		Full Name:<input id="fn" type="text"><br><br>
+		<button id="a" onclick="Addstudent()">Add Student</button><br><br>
+		<button id="atmpt">Attempted</button>
+		<button id="notatmpt">Not Attempted</button>
+		<table border=2 id="table">
+		</table>
+		<script>
+			var ar=[];
+			var fname=document.getElementById("fn");
+			var attempt=document.getElementById("atmpt");
+			var notattempt=document.getElementById("notatmpt");
+			var tables=document.getElementById("table");
+			if(localStorage.getItem("value")){
+				ar=JSON.parse(localStorage.getItem("value"));
+				add();
+			}
+			function Addstudent(){
+				tables.innerHTML="";
+				var obj={
+					"name": fname.value,
+					"status":false
+				}
+				ar.push(obj);
+				add();
+				localStorage.setItem("value",JSON.stringify(ar));
+				}
+			function add(){
+				tables.innerHTML="";
+				var header=document.createElement("tr");
+				var header2=document.createElement("th");
+				var header3=document.createElement("th");
+				header2.innerHTML="Name Of Student";
+				header3.innerHTML="Attempted/Not Attempted";
+				header.appendChild(header2);
+				header.appendChild(header3);
+				ar.forEach(function(a){
+					var row=document.createElement("tr");
+					var column1=document.createElement("td");
+					var column2=document.createElement("td");
+					var btn=document.createElement("button");
+					btn.innerHTML="Attempted";
+					column2.appendChild(btn);
+					var data1=a.name;
+					column1.innerHTML=data1;
+					if(a.status){
+						column1.classList.add('strike');
+						btn.style.backgroundColor="yellow";
+					}
+					else{
+						column1.classList.remove('strike');
+						//btn.style.backgroundColor="yellow";
+					}
+					row.appendChild(column1);
+					row.appendChild(column2);
+					tables.appendChild(row);
+					btn.onclick=function(){
+					if(btn.style.backgroundColor==="yellow"){
+						btn.style.backgroundColor="";
+						column1.classList.remove('strike');
+						a.status=false;
+						localStorage.setItem("value",JSON.stringify(ar));
+						}
+					else{
+						btn.style.backgroundColor="yellow";
+						column1.classList.add('strike');
+						a.status=true;
+						localStorage.setItem("value",JSON.stringify(ar));
+						}
+					}
+					attempt.onclick=function(){
+						var child=tables.children;
+						for(j=0;j<=child.length-1;j++){
+						child[j].style.display="";
+						}
+						for(i=0;i<=child.length-1;i++){
+						if(ar[i].status===true){
+							child[i].style.display="";
+						}
+						if(ar[i].status===false){
+							child[i].style.display="none";
+						}
+						}
+					}
+					notattempt.onclick=function(){
+						var child=tables.children;
+						for(j=0;j<=child.length-1;j++){
+						child[j].style.display="";
+						}
+						for(i=0;i<=child.length-1;i++){
+						if(ar[i].status===false){
+							child[i].display="";
+						}
+						else{
+							child[i].style.display="none";
+						}
+						}
+					}
+					});
+			}
+		</script>
+	</body>
+</html>

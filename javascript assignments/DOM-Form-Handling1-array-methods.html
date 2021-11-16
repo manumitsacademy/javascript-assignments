@@ -1,0 +1,18 @@
+<html>
+<body>
+First Name:<input type="text" id="a1"><br>
+<button onclick="check()">Check</button>
+<script>
+function check(){
+var same=document.getElementById("a1").value;
+if(/[0-9]/.test(same)){
+alert("It is There");
+}
+else{
+alert("It is not There");
+}
+console.log(/[A-Z]/.test(same));
+}
+</script>
+</body>
+</html>

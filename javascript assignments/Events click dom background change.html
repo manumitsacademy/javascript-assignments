@@ -1,0 +1,33 @@
+<html>
+	<style>
+		#d1{
+			width:300px;
+			height:200px;
+			border:2px solid black;
+		}
+	</style>
+	<body>
+		<button id="d1" onclick="abc()"></button>
+		<script>
+		var mydiv= document.getElementById("d1");
+				var c=localStorage.getItem("s");
+				mydiv.style.backgroundColor=c;
+				var d=localStorage.getItem("t");
+				d1.innerHTML=d;
+			function abc(){
+				if(mydiv.style.backgroundColor==='green'){
+					mydiv.style.backgroundColor='white';
+					d1.innerHTML="white"
+					localStorage.setItem("s",mydiv.style.backgroundColor);
+					localStorage.setItem("t",d1.innerHTML);
+				}
+				else{
+					mydiv.style.backgroundColor='green';
+					d1.innerHTML="green"
+					localStorage.setItem("s",mydiv.style.backgroundColor);
+					localStorage.setItem("t",d1.innerHTML);
+				}
+			}
+		</script>
+	</body>
+</html>

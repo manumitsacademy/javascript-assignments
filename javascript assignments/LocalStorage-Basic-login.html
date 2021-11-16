@@ -1,0 +1,21 @@
+<html>
+<body bgcolor="purple">
+<center><h2>Login Page</h2></center>
+<center>Username: <input id="un" type="text"></center><br>
+<center>Password: <input id="pwd" type="password"></center><br>
+<center><button id="get">get</button></center>
+<center><button id="login">submit</button></center>
+<script>
+login.onclick=function(){
+var x=localStorage.getItem("un");
+var y=localStorage.getItem("pwd");
+if(x==un.value && y==pwd.value){
+alert("login successful");
+}
+else{
+alert("incorrect username or password");
+}
+}
+</script>
+</body>
+</html>

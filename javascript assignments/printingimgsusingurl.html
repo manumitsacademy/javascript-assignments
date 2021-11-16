@@ -1,0 +1,19 @@
+<html>
+	<body>
+		<input id="b" type="text">
+		<button onclick="abc()">Check</button>
+		<div id="s"></div>
+		<script>
+			var x=document.getElementById("b");
+			function abc(){
+				
+				var c=document.createElement("img");
+				document.getElementById("s").appendChild(c);
+				c.src=x.value;
+				c.style.width = "20%";
+				c.style.height="300px";
+				c.style.marginTop="20px";
+			}
+		</script>
+	</body>
+</html>

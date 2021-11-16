@@ -1,0 +1,14 @@
+<html>
+<script>
+var n=12345,rem=0,sum=0,k=0;
+while(n>0){
+rem=n%10;
+if(k===0 || n<10){
+sum=sum+rem;
+k=55;
+}
+n=parseInt(n/10);
+}
+document.write(sum);
+</script>
+</html>

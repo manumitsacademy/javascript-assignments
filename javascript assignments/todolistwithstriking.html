@@ -1,0 +1,134 @@
+<html>
+	<style>
+		#a{
+			margin-left:20px;
+		}
+		body{
+			background-color:pink;
+		}
+		.strike{
+			text-decoration:line-through;
+		}
+	</style>
+	<body>
+		<h1>To do list</h1>
+		<input id="c" type="text">
+		<button id="a" onclick="Addstudent()">Add</button><br><br>
+		<button id="all">All Tasks</button>
+		<button id="complete">Completed</button>
+		<button id="incomplete">Incomplete</button>
+		<ul id="b">
+			
+		</ul>
+		<script>
+			var ar=[];
+			var x=document.getElementById("a");
+			var y=document.getElementById("b");
+			var y1=document.getElementById("c");
+			var alltasks=document.getElementById("all");
+			var completed=document.getElementById("complete");
+			var incompleted=document.getElementById("incomplete");
+			if(localStorage.getItem("value")){
+				ar=JSON.parse(localStorage.getItem("value"));
+				add();
+			}
+			function Addstudent(){
+				y.innerHTML="";
+				var obj={
+					"name":y1.value,
+					"status":false
+				}
+				ar.push(obj);
+				add();
+				localStorage.setItem("value",JSON.stringify(ar));
+			}
+			function add(){
+				y.innerHTML = "";
+				ar.forEach(function(a,i){
+				var z=document.createElement("li");
+				var done=document.createElement("button");
+				done.style.margin="5px";
+				var undo=document.createElement("button");
+				undo.style.margin="5px";
+				var deletes=document.createElement("button");
+				deletes.style.margin="5px";
+				var data=a.name;
+				z.innerHTML=data;
+				if(a.status){
+					z.classList.add('strike');
+					undo.style.display="inline-block";
+					done.style.display="none";
+					deletes.disabled=false;
+				}
+				else{
+					undo.style.display="none";
+					done.style.display="inline-block";
+					deletes.disabled=true;
+				}
+				done.innerHTML="Done";
+				undo.innerHTML="Undo";
+				deletes.innerHTML="Delete";
+				
+				done.onclick=function(){
+					done.style.display="none";
+					undo.style.display="inline-block";
+					deletes.disabled=false;
+					z.classList.add('strike');
+					a.status=true;
+					localStorage.setItem("value",JSON.stringify(ar));
+				}
+				undo.onclick=function(){
+					done.style.display="inline-block";
+					undo.style.display="none";
+					deletes.disabled=false;
+					z.classList.remove('strike');
+					a.status=false;
+					localStorage.setItem("value",JSON.stringify(ar));
+				}
+				deletes.onclick=function(){
+					ar.splice(i,1);
+					add();
+				}
+				alltasks.onclick=function(){
+					var child=y.children;
+					for(j=0;j<=child.length-1;j++){
+					child[j].style.display="";
+				}
+				}
+				completed.onclick=function(){
+				var child=y.children;
+				for(j=0;j<=child.length-1;j++){
+				child[j].style.display="";
+				}
+				for(i=0;i<=child.length-1;i++){
+					if(ar[i].status===true){
+						child[i].style.display="";
+					}
+					if(ar[i].status===false){
+						child[i].style.display="none";
+					}
+				}
+				}
+				incompleted.onclick=function(){
+					var child=y.children;
+					for(j=0;j<=child.length-1;j++){
+					child[j].style.display="";
+					}
+					for(i=0;i<=child.length-1;i++){
+					if(ar[i].status===false){
+						child[i].display="";
+					}
+					else{
+						child[i].style.display="none";
+					}
+				}
+				}
+				y.appendChild(z);
+				z.appendChild(done);
+				z.appendChild(undo);
+				z.appendChild(deletes);
+				})
+			}
+		</script>
+	</body>
+</html>

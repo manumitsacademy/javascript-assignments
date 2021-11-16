@@ -1,0 +1,17 @@
+<html>
+	<body>
+		<button onclick="names()">Asc</button>
+	</body>
+	<script>
+		var ar=["Akshaya","Sowmya","Bhavana","Kavitha","Janu"];
+		ar.sort();
+		function names(){
+			var y=document.body;
+			for(var i=0;i<=ar.length-1;i++){
+				var newli=document.createElement("li");
+				newli.innerHTML=ar[i];
+				y.appendChild(newli);
+			}
+			}
+	</script>
+</html>

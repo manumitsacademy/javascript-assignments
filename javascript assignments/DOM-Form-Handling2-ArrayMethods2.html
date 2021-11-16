@@ -1,0 +1,196 @@
+<html>
+	<style>
+		#a{
+			margin:10px 10px 10px 10px;
+		}
+		body{
+			background-color:violet;
+		}
+		#b{
+			margin-top:20px;
+		}
+		#c{
+			margin:10px 10px 10px 10px;
+		}
+		#c1{
+			margin:10px 10px 10px 10px;
+		}
+		#c2{
+			margin:10px 10px 10px 10px;
+		}
+	</style>
+	<body>
+		<h1>Add Students</h1>
+		Full Name:<input id="c" type="text"><br>
+		Contact No:<input id="c1" type="text"><br>
+		Email Id:<input id="c2" type="text"><br>
+		<input id="imgs" type="file"><br>
+		<button id="a" onclick="Addstudent()">Add Contact</button>
+		<button id="a1" onclick="Savestudent()">Save Contact</button>
+		<button id="small" onclick="Ascending()">Asc</button>
+		<button id="large" onclick="Decending()">Dsc</button>
+		Search:<input id="search" onkeyup="searchcontact()">
+		<div id="b"></div>
+		<script>
+			var ar=[];
+			var x=document.getElementById("a");
+			var x1=document.getElementById("a1");
+			var y=document.getElementById("b");
+			var y1=document.getElementById("c");
+			var y2=document.getElementById("c1");
+			var y3=document.getElementById("c2");
+			var img=document.getElementById("imgs");
+			var ascen=document.getElementById("small");
+			var decen=document.getElementById("large");
+			var searchbox=document.getElementById("search");
+			x1.style.display="none";
+			if(localStorage.getItem("value")){
+				ar=JSON.parse(localStorage.getItem("value"));
+				contact();
+			}
+			searchbox.onkeyup=function searchcontact(){
+			var child=y.children;
+			for(i=0;i<=child.length-1;i++){
+				if(ar[i].name.startsWith(searchbox.value)){
+						child[i].style.display="block";
+				}
+				else{
+						child[i].style.display="none";
+				}
+			}
+			}
+			function Addstudent(){
+				var obj={
+					"name": y1.value,
+					"contact": y2.value,
+					"email": y3.value,
+					"image":img.files[0].name
+					
+				}
+				ar.push(obj);
+				contact();
+				localStorage.setItem("value",JSON.stringify(ar));
+			}
+			function contact(){
+				y.innerHTML="";
+				ar.forEach(function(a,i){
+					var card=document.createElement("div");
+					card.style.border="2px solid red";
+					card.style.borderRadius="10px";
+					card.style.backgroundColor="orange";
+					card.style.position="relative";
+					card.style.width="20%";
+					card.style.marginBottom="20px"
+					card.style.marginLeft="20px";
+					card.style.padding="10px";
+					
+					var imgcenter=document.createElement("center");
+					var images=document.createElement("img");
+					images.style.width="60px";
+					images.style.height="60px";
+					images.style.marginBottom="10px";
+					images.style.borderRadius="50%"
+					images.src=a.image;
+					imgcenter.appendChild(images);
+					card.appendChild(imgcenter);
+					
+					var fname=document.createElement("div");
+					var fn=document.createElement("span");
+					fn.innerHTML="Name";
+					var contactno=document.createElement("div");
+					var cn=document.createElement("span");
+					cn.innerHTML="Contact";
+					var emails=document.createElement("div");
+					var em=document.createElement("span");
+					em.innerHTML="Email";
+					fname.innerHTML=fn.innerHTML+":&nbsp;"+a.name;
+					contactno.innerHTML=cn.innerHTML+":&nbsp;"+a.contact;
+					emails.innerHTML=em.innerHTML+":&nbsp"+a.email;
+					card.appendChild(fname);
+					card.appendChild(contactno);
+					card.appendChild(emails);
+					
+					var delbtn=document.createElement("button");
+					delbtn.innerHTML="Delete";
+					delbtn.style.backgroundColor="skyblue";
+					delbtn.style.marginTop="10px";
+					delbtn.style.marginRight="10px";
+					card.appendChild(delbtn);
+					
+					delbtn.onclick=function(){
+						ar.splice(i,1);
+						contact();
+						localStorage.setItem("value",JSON.stringify(ar));
+					}
+					y.appendChild(card);
+					
+					var editbtn=document.createElement("button");
+					editbtn.innerHTML="Edit";
+					editbtn.style.backgroundColor="skyblue";
+					editbtn.style.marginTop="30px";
+					editbtn.style.marginRight="30px";
+					card.appendChild(editbtn);
+					
+					editbtn.onclick=function(){
+						x.style.display="none";
+						x1.style.display="block";
+						y1.value=a.name;
+						y2.value=a.contact;
+						y3.value=a.email;
+						x1.onclick=function Savestudent(){
+						var obj1={
+							"name": y1.value,
+							"contact": y2.value,
+							"email": y3.value,
+							"image":img.files[0].name
+							}
+						ar[i]=obj1;
+						contact();
+						localStorage.setItem("value",JSON.stringify(ar));
+						x.style.display="block";
+						x1.style.display="none";
+						y1.value="";
+						y2.value="";
+						y3.value="";
+						img.value="";
+					}
+					}
+					ascen.onclick=function Ascending(){
+						ar.sort(function(a,b){
+							var s=a.name.toUpperCase();
+							var t=b.name.toUpperCase();
+							if(s<t){
+								return -1;
+							}
+							if(s>t){
+								return 1;
+							}
+							return 0;
+						});
+						contact();
+						ascen.style.display="none";
+						decen.style.display="inline-block";
+					}
+					decen.onclick=function Decending(){
+						ar.sort(function(a,b){
+							var s=a.name.toUpperCase();
+							var t=b.name.toUpperCase();
+							if(s<t){
+								return 1;
+							}
+							if(s>t){
+								return -1;
+							}
+							return 0;
+						});
+						contact();
+						ascen.style.display="inline-block";
+						decen.style.display="none";
+					}
+					y.appendChild(card);
+				});
+			}
+			
+		</script>
+	</body>
+</html>	

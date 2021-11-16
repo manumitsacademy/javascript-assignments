@@ -1,0 +1,33 @@
+<html>
+	<style>
+		body{
+			background-color:violet;
+		}
+	</style>
+	<body>
+	<div id="list">
+	</div>
+	Name: <input id="c" type="text">
+	<button id="a" onclick="Addstudent()">Add Student</button>
+	<ul id="uls"></ul>
+	<script>
+		var mainlist = document.getElementById("uls");
+		var ar = [];
+		var y1=document.getElementById("c");
+		function Addstudent(){
+				uls.innerHTML="";
+				ar.push(y1.value);
+				genList();
+			}
+		
+		function genList(){
+			var x = ar.map((student)=>{
+				return `<li>${student}</li>`;
+			});
+			mainlist.innerHTML = x.join("");
+		}
+		
+		
+	</script>
+	</body>
+</html>

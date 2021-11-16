@@ -1,0 +1,83 @@
+<html>
+	<style>
+		
+	</style>
+	<body>
+		<h1>Score:<span id ="a">0</span>-<span id ="f">0</span></h1>
+		<div id="b">
+			<button onclick="add(event)">0</button>
+			<button onclick="add(event)">1</button>
+			<button onclick="add(event)">2</button>
+			<button onclick="add(event)">3</button>
+			<button onclick="add(event)">4</button>
+			<button onclick="add(event)">5</button>
+			<button onclick="add(event)">6</button>
+			<button onclick="add(event)">Wide</button>
+			<button onclick="add(event)">Wicket</button>
+		</div>
+		<script>
+			var x=document.getElementById("a");
+			var y=document.getElementById("b");
+			var z=document.getElementById("f");
+			var sum=0;
+			var wicket=0;
+			if(localStorage.getItem("value")){
+			var m=localStorage.getItem("value");
+			x.innerHTML=m;
+			var n=localStorage.getItem("value1");
+			z.innerHTML=n;
+			}
+			function add(e){
+				switch(e.target.innerHTML){
+					case '0':
+						sum=sum+0;
+						x.innerHTML=sum;
+						localStorage.setItem("value",sum);
+						break;
+					case '1':
+						sum=sum+1;
+						x.innerHTML=sum;
+						localStorage.setItem("value",sum);
+						break;
+					case '2':
+						sum=sum+2;
+						x.innerHTML=sum;
+						localStorage.setItem("value",sum);
+						break;
+					case '3':
+						sum=sum+3;
+						x.innerHTML=sum;
+						localStorage.setItem("value",sum);
+						break;
+					case '4':
+						sum=sum+4;
+						x.innerHTML=sum;
+						var i5=document.createElement("span");
+						i.innerHTML='4';
+						localStorage.setItem("value",sum);
+						break;
+					case '5':
+						sum=sum+5;
+						x.innerHTML=sum;
+						localStorage.setItem("value",sum);
+						break;
+					case '6':
+						sum=sum+6;
+						x.innerHTML=sum;
+						localStorage.setItem("value",sum);
+						break;
+					case 'Wide':
+						sum=sum+1;
+						x.innerHTML=sum;
+						localStorage.setItem("value",sum);
+						break;
+					case 'Wicket':
+						wicket=wicket+1;
+						z.innerHTML=wicket;
+						localStorage.setItem("value1",wicket);
+						break;
+				}
+			}
+		</script>
+	</body>
+</html>

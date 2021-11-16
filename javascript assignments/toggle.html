@@ -1,0 +1,20 @@
+<html>
+	<style>
+	</style>
+	<body>
+		<button id="d1" onclick="abc()">Toggle</button>
+		<h3 id="d2"></h3>
+		<script>
+				var a=document.getElementById("d1");
+				var b=document.getElementById("d2");
+					var x=true;
+			var z = window.localStorage.getItem("Value");
+			b.innerHTML=z;
+			function abc(){
+				x=!x;
+				b.innerHTML=x;
+				window.localStorage.setItem("Value",x);
+				}
+		</script>
+	</body>
+</html>

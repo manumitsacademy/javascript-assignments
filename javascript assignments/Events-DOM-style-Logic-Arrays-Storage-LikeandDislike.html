@@ -1,0 +1,114 @@
+<html>
+	<head>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+	</head>
+	<style>
+		#f{
+			border:2px solid black;
+			display:flex;
+			padding:20px;
+            border-radius: 30px;
+            background-color: springgreen;
+			margin-bottom: 20px;
+		}
+		#c{
+			height:300px;
+			margin-right:10px;
+		}
+		#s{
+			display: flex;
+			list-style: none;
+		}
+		.far{
+			margin-right: 10px;
+			font-size:30px;
+		}
+	</style>
+	<body>
+		<textarea id="text"></textarea><br><br>
+		<input id="files" type="file"><br><br>
+		<button id="posts">Post</button><br><br>
+		<div id="a">
+			
+		</div>
+		<script>
+			var ar=[];
+			var x=document.getElementById("a");
+			var texts=document.getElementById("text")
+			var file=document.getElementById("files");
+			var btn=document.getElementById("posts");
+            if(localStorage.getItem("value")){
+				ar=JSON.parse(localStorage.getItem("value"));
+				genList();
+			}
+			btn.onclick=function(){
+				var obj={
+					"image":file.files[0].name,
+					"text":texts.value,
+					"likes":0,
+					"dislikes":0,
+					"rating":0
+					
+				};
+				ar.push(obj);
+				genList();
+                localStorage.setItem("value",JSON.stringify(ar));
+			}
+            
+			function genList(){
+				var y=ar.map((a)=>{
+					return `<div id="f">
+										<img id="c" src=${a.image}>
+										
+								<div>		
+										<div>${a.text}</div>
+										<span id="d" class="fas fa-thumbs-up"></span><span id="g">${a.likes}</span><br><br>
+										<span id="e" class="fas fa-thumbs-down"></span><span id="h"> ${a.dislikes}</span>
+										<div id="s">
+											<span class="fas fa-star"></span>
+											<span class="fas fa-star"></span>
+											<span class="fas fa-star"></span>
+											<span class="fas fa-star"></span>
+											<span class="fas fa-star"></span>
+										</div>
+								</div>
+						</div>
+							`	;			
+				});
+
+				x.innerHTML = y.join("");
+				var like=document.querySelectorAll('#d');
+				var dislike=document.querySelectorAll('#e');
+				var stars = document.querySelectorAll('#s');
+				like.forEach((a,i)=>{
+					like[i].onclick=()=>{
+						ar[i].likes++;
+						genList();
+						localStorage.setItem("value",JSON.stringify(ar));						
+					}
+				});
+				dislike.forEach((a,i)=>{
+					dislike[i].onclick=()=>{
+						ar[i].dislikes++;
+						genList();
+						localStorage.setItem("value",JSON.stringify(ar));
+					}
+				});
+				stars.forEach((a,i)=>{
+					var star=a.children;
+					for(let j=0;j<=star.length-1;j++){
+						star[j].onclick=()=>{
+							ar[i].rating=j+1;
+							genList();
+							localStorage.setItem("value",JSON.stringify(ar));
+						}
+					}
+					for(var k=0;k<=ar[i].rating-1;k++){
+						star[k].style.color="yellow";
+					}
+				})
+				
+			}
+		</script>
+	</body>
+</html>

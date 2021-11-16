@@ -1,0 +1,48 @@
+<html>
+	<style>
+		#a{
+			width:150px;
+			height:150px;
+			border:2px solid black;
+			margin-bottom: 20px;
+		}
+	</style>
+	<body>
+		<div id="a"></div>
+		<button id="b" onclick="abc()">On</button>
+		<button id="c" onclick="xyz()">Off</button>
+		<script>
+			var x=document.getElementById("a");
+			var y=document.getElementById("b");
+			var z=document.getElementById("c");
+			var m=JSON.parse(localStorage.getItem("anything"));
+			if(localStorage.getItem("anything")){
+			x.style.backgroundColor=m.xcol;
+			y.style.backgroundColor=m.ycol;
+			z.style.backgroundColor=m.zcol;
+			}
+			function abc(){
+			x.style.backgroundColor="yellow";
+			y.style.backgroundColor="red";
+			z.style.backgroundColor="white";
+			var sow={
+				"xcol":x.style.backgroundColor,
+				"ycol":y.style.backgroundColor,
+				"zcol":z.style.backgroundColor
+				}
+				localStorage.setItem("anything",JSON.stringify(sow));
+			}
+			function xyz(){
+			x.style.backgroundColor="white";
+			y.style.backgroundColor="white";
+			z.style.backgroundColor="red";
+			var sow={
+				"xcol":x.style.backgroundColor,
+				"ycol":y.style.backgroundColor,
+				"zcol":z.style.backgroundColor
+				}
+				localStorage.setItem("anything",JSON.stringify(sow));
+			}
+		</script>
+	</body>
+</html>

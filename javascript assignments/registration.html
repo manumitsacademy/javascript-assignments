@@ -1,0 +1,20 @@
+<html>
+<body>
+First Name: <input id="fn" type="text"><br>
+Last Name: <input id="ln" type="text"><br>
+Email: <input id="email" type="text"><br>
+Username: <input id="un" type="text"><br>
+Paaword: <input id="pwd" type="password"><br>
+<button id="submit">submit</button>
+<script>
+submit.onclick=function(){
+localStorage.setItem('fn',fn.value);
+localStorage.setItem('ln',ln.value);
+localStorage.setItem('email',email.value);
+localStorage.setItem('un',un.value);
+localStorage.setItem('pwd',pwd.value);
+alert("Registration successful");
+}
+</script>
+</body>
+</html>

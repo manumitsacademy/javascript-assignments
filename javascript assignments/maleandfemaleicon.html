@@ -1,0 +1,36 @@
+<html>
+	<body>
+		<input id="b" type="radio" name="gender" value="male" onchange="Myfunction()"><label>Male</label><br>
+		<input id="b1" type="radio" name="gender" value="female"  onchange="Myfunction1()"><label>Female</label>
+		<img id="i1">
+		<img id="i2">
+	<script>
+		var x1=document.getElementById("i1");
+		var x2=document.getElementById("i2");
+		var c=localStorage.getItem("s");
+		x1.src=c;
+		var d=localStorage.getItem("t");
+		x1.style.display=d;
+		var e=localStorage.getItem("u");
+		x2.style.display=e;
+		var f=localStorage.getItem("m");
+		x2.src=f;
+		function Myfunction(){
+			x1.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdVg34rLrZ7TJ0Oqvn7Q8o9WtnqJV56SUrRg&usqp=CAU";
+			x1.style.display="block";
+			x2.style.display="none";
+			localStorage.setItem("s",x1.src);
+			localStorage.setItem("t",x1.style.display);
+			localStorage.setItem("u",x2.style.display);
+		}
+		function Myfunction1(){
+			x2.src="https://i.pinimg.com/200x150/5f/33/69/5f3369314bea6b85a183306dc73cb968.jpg";
+			x2.style.display="block";
+			x1.style.display="none";
+			localStorage.setItem("m",x2.src);
+			localStorage.setItem("t",x1.style.display);
+			localStorage.setItem("u",x2.style.display);
+		}
+	</script>
+	</body>
+</html>

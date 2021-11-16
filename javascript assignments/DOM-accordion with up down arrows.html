@@ -1,0 +1,66 @@
+<html>
+	<head>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+	</head>
+	<style>
+		p{
+			display:none;
+		}
+		.fa-chevron-up{
+			position: absolute;
+			right: 10px;
+		}
+		.fa-chevron-down{
+			position: absolute;
+			right: 10px;
+		}
+	</style>
+	<body>
+		<h1>Welcome to My World<i class="fa fa-chevron-up"></i><i class="fa fa-chevron-down"></i></h1>
+		<p>
+			The HyperText Markup Language, or HTML(HyperText Markup Language) is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.Web browsers receive HTML documents from a web server or from local storage and render the documents into multimedia web pages. HTML describes the structure of a web page semantically and originally included cues for the appearance of the document.
+		</p>
+		<h1>Introduction<i class="fa fa-chevron-up"></i><i class="fa fa-chevron-down"></i></h1>
+		<p>
+			The HyperText Markup Language, or HTML(HyperText Markup Language) is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.Web browsers receive HTML documents from a web server or from local storage and render the documents into multimedia web pages. HTML describes the structure of a web page semantically and originally included cues for the appearance of the document.
+		</p>
+		<h1>Chapter1<i class="fa fa-chevron-up"></i><i class="fa fa-chevron-down"></i></h1>
+		<p>
+			The HyperText Markup Language, or HTML(HyperText Markup Language) is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.Web browsers receive HTML documents from a web server or from local storage and render the documents into multimedia web pages. HTML describes the structure of a web page semantically and originally included cues for the appearance of the document.
+		</p>
+		<h1>Chapter<i class="fa fa-chevron-up"></i><i class="fa fa-chevron-down"></i></h1>
+		<p>
+			The HyperText Markup Language, or HTML(HyperText Markup Language) is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.Web browsers receive HTML documents from a web server or from local storage and render the documents into multimedia web pages. HTML describes the structure of a web page semantically and originally included cues for the appearance of the document.
+		</p>
+		<script>
+			var h1s=document.getElementsByTagName("h1");
+			var ps=document.getElementsByTagName("p");
+			for(i=0;i<=h1s.length-1;i++){
+				h1s[i].style.backgroundColor="black";
+				h1s[i].style.color="white";
+				h1s[i].firstElementChild.style.display="none";
+				h1s[i].addEventListener("click",function(event){
+					if(event.target.nextElementSibling.style.display==="block"){
+						for(var i=0;i<=ps.length-1;i++){
+							ps[i].style.display="none";
+						}
+						event.target.firstElementChild.style.display="none";
+						event.target.lastElementChild.style.display="inline";
+					}
+					else{
+						for(var i=0;i<=ps.length-1;i++){
+							ps[i].style.display="none";
+						}
+						for(var i=0;i<=h1s.length-1;i++){
+							h1s[i].firstElementChild.style.display="none";
+							h1s[i].lastElementChild.style.display="inline";
+						}
+						event.target.nextElementSibling.style.display="block";
+						event.target.firstElementChild.style.display="inline";
+						event.target.lastElementChild.style.display="none";
+						}
+				})
+			}
+		</script>
+	</body>
+</html>

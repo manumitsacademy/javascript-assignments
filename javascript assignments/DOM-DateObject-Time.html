@@ -1,0 +1,78 @@
+<html>
+	<style>
+		#a{
+			padding:30px;
+			margin:20px;
+			background-color:indianred;
+			color:white;
+		}
+		#b{
+			margin-left:700px;
+		}
+		#c{
+			transform:skewX(20deg)
+		}
+		#d{
+			font-size:30;
+			margin-left:800px;
+			font-weight: bold;
+			color: purple;
+		}
+		#k{
+			font-size:30;
+			margin-left:750px;
+			font-weight: bold;
+			color: purple;
+		}
+	</style>
+	<body>
+	<div id="b">
+		<button id="a"><p id="c">HEROS</p></button>
+		<button id="a"><p id="c">ITEMS</p></button>
+		<button id="a"><p id="c">LEARN</p></button>
+		<button id="a"><p id="c">ABOUT</p></button>
+	</div>
+	<div id="k">
+	</div>
+	<div id="d">
+	</div> 
+	</body>
+	<script>
+		var x=document.getElementById("b");
+		x.style.transform="skewX(-20deg)";
+		var y=document.getElementById("d");
+		var j=document.getElementById("k");
+		function xyz(){
+		var m=new Date();
+		var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+		var days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+		var day=days[m.getDay()];
+		var date=m.getDate();
+		console.log(day)
+		var month=months[m.getMonth()];
+		var year=m.getFullYear();
+		<!-- if(month>=0 && month<10){ -->
+				<!-- month='0'+month; -->
+			<!-- } -->
+			if(date>=0 && date<10){
+				date='0'+date;
+			}
+		var u=(day+date+"th"+"&nbsp;&nbsp;"+month+"&nbsp;&nbsp;"+year);
+		k.innerHTML=u;
+		var z=new Date();
+		var hours=z.getHours();
+		var minutes=z.getMinutes();
+		var seconds=z.getSeconds();
+			t=setTimeout(xyz,1000);
+			if(minutes>=0 && minutes<10){
+				minutes='0'+minutes;
+			}
+			if(seconds>=0 && seconds<10){
+				seconds='0'+seconds;
+			}
+			var o=(hours+":"+minutes+":"+seconds);
+			y.innerHTML=o;
+		}
+		xyz();
+	</script>
+</html>

@@ -1,0 +1,35 @@
+<html>
+	<style>
+		#a{
+			width:150px;
+			height:150px;
+			border:2px solid black;
+			margin-bottom: 20px;
+		}
+	</style>
+	<body>
+		<div id="a"></div>
+		<button id="b" onclick="abc()">OnOff</button>
+		<script>
+			var x=document.getElementById("a");
+			var y=document.getElementById("b");
+			if(localStorage.getItem("s")){
+			var c=localStorage.getItem("s");
+				x.style.backgroundColor=c;
+			}
+			else{
+				localStorage.setItem("s","");
+			}
+			function abc(){
+				if(x.style.backgroundColor==="red"){
+					x.style.backgroundColor="yellow";
+					localStorage.setItem("s",x.style.backgroundColor);
+				}
+				else{
+					x.style.backgroundColor="red";
+					localStorage.setItem("s",x.style.backgroundColor);
+				}
+			}
+		</script>
+	</body>
+</html>

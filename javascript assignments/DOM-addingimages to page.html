@@ -1,0 +1,38 @@
+<html>
+	<body>
+		<input type="text" id="a"><br><br>
+		<button onclick="addimage()">Add Image</button>
+		<div id="images"></div>
+		<script>
+			var imagearray = [];
+			var y=document.getElementById("a")
+			var x=document.getElementById("images");
+			if(localStorage.getItem("images")){
+				imagearray=JSON.parse(localStorage.getItem("images"));
+				genImages();
+			}
+				function genImages(){
+				imagearray.forEach((z)=>{
+					var b=document.createElement("img");
+					b.src=z;
+					b.style.width="200px";
+					x.appendChild(b);
+					localStorage.setItem("images",JSON.stringify(imagearray));
+				});
+			}
+			console.log(imagearray);
+			function addimage(){
+				x.innerHTML="";
+				var url=y.value;
+				imagearray.push(url);
+				genImages();
+			}
+
+		</script>
+	</body>
+</html>
+
+
+
+			
+			

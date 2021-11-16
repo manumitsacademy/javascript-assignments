@@ -1,0 +1,27 @@
+<html>
+	<style>
+		#d1{
+			width:300px;
+			height:200px;	
+			background-image:url("https://www.w3schools.com/js/pic_bulboff.gif");
+			background-repeat: no-repeat;
+		}
+	</style>
+	<body>
+		<div id="d1" onclick="abc()"></div>
+		<script>
+			var f=false;
+			function abc(){
+				var mydiv=document.getElementById("d1");
+				if(f===false){
+					mydiv.style.backgroundImage='url("https://www.w3schools.com/js/pic_bulbon.gif")';
+					f=true;
+				}
+				else{
+					mydiv.style.backgroundImage='url("https://www.w3schools.com/js/pic_bulboff.gif")';
+					f=false;
+				}
+			}
+		</script>
+	</body>
+</html>
