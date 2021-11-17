@@ -6,16 +6,23 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <h2>Finding the minimum among array elements</h2>
+        <h2>Finding the maximum, sum and average of array elements</h2>
     </body>
     <script>
-        var ar=[133,200,3,426,5,4446,20,],min=ar[0];
+        var ar=[1,2,3,4,5,6,7,8,9,10],max=ar[0],sum=0;
         document.write("The given array is ["+ar+"]<br><br>");
         for (i=1; i<=ar.length-1;i++){
-            if (min>ar[i]) {
-                min=ar[i];
+            if (max<ar[i]) {
+                max=ar[i];
             }
         }
-        document.write("The minimum number is "+min+'<br>');
+        document.write("The maximum number is "+max+'<br>');
+        for(j=0;j<=ar.length-1;j++){
+        sum=sum+ar[j];
+        }
+        document.write("The sum of all numbers is "+sum+'<br>');
+        var avg;
+        avg=sum/ar.length;
+        document.write("The average is "+avg+'<br>');
     </script>
 </html>

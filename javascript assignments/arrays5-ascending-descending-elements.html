@@ -1,0 +1,46 @@
+<html>
+	<head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+	<body>
+		<h2>Arranging the elements of an array in ascending and descending order</h2>
+		<h3 id="arr"></h3>
+		<h3>Click on the buttons below to arrange the elements in ascending or descending order</h3>
+		<button onclick="asc()">Ascending</button>
+		<button onclick="dsc()">Descending</button>
+		
+		<div id="box"></div>
+	</body>
+	<script>
+		var ar=[40, 100, 1, 5, 25, 10];
+		document.getElementById('arr').innerHTML = "The given array is ["+ar+"]";
+		var y=document.getElementById("box");
+		for(var i=0;i<=ar.length-1;i++){
+			var newli=document.createElement("li");
+			newli.innerHTML=ar[i];
+			y.appendChild(newli);
+		}
+		
+		function asc(){
+			y.innerHTML = "";
+			ar.sort(function(a, b){return a - b});//asscending
+			for(var i=0;i<=ar.length-1;i++){
+				var newli=document.createElement("li");
+				newli.innerHTML=ar[i];
+				y.appendChild(newli);
+			}
+		}
+		function dsc(){
+			y.innerHTML = "";
+			ar.sort(function(a, b){return b - a});//descending			
+			for(var i=0;i<=ar.length-1;i++){
+				var newli=document.createElement("li");
+				newli.innerHTML=ar[i];
+				y.appendChild(newli);
+		}
+		}
+	</script>
+</html>
