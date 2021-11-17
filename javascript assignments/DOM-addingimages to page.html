@@ -1,33 +1,45 @@
 <html>
+	<head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+    </head>
 	<body>
-		<input type="text" id="a"><br><br>
+		<h1>Displaying images using image URL</h1>
+		<label>Add Image URL: </label><input type="text" id="a" placeholder="Enter the image URL"><br><br>
 		<button onclick="addimage()">Add Image</button>
 		<div id="images"></div>
 		<script>
 			var imagearray = [];
-			var y=document.getElementById("a")
+			var y=document.getElementById("a");
 			var x=document.getElementById("images");
+
 			if(localStorage.getItem("images")){
 				imagearray=JSON.parse(localStorage.getItem("images"));
 				genImages();
 			}
-				function genImages(){
+
+			function genImages(){
 				imagearray.forEach((z)=>{
 					var b=document.createElement("img");
+					var c = document.createElement("br");
 					b.src=z;
-					b.style.width="200px";
+					b.style.width="400px";
+					b.style.marginBottom = "10px";
+					b.style.borderRadius = "5px";
 					x.appendChild(b);
+					x.appendChild(c);
 					localStorage.setItem("images",JSON.stringify(imagearray));
 				});
 			}
-			console.log(imagearray);
+
 			function addimage(){
 				x.innerHTML="";
 				var url=y.value;
 				imagearray.push(url);
 				genImages();
 			}
-
 		</script>
 	</body>
 </html>

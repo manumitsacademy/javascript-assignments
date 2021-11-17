@@ -1,0 +1,83 @@
+body{
+    text-align: center;
+    padding: 40px;
+    font-size: 30px;
+    color: red;
+    background-color: lightyellow;
+    font-family: 'Rubik', sans-serif;
+}
+
+button{
+    background-color: orange;
+    border-color: orange;
+    outline: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#box{
+    margin-top: 30px;
+}
+
+.accord-body{
+    display:none;
+}
+.sign{
+    position: absolute;
+    right:26px;
+    color: white;
+    background-color: black;
+}
+
+#images{
+    margin-top: 30px;
+}
+
+#d{
+    font-weight: bold;
+    color: rgb(21, 255, 0);
+    font-size: 40px;
+}
+#k{
+    font-weight: bold;
+    color: rgb(21, 255, 0);
+    font-size: 40px;
+}
+
+.clock-container{
+    display: flex;
+    justify-content: center;
+}
+
+.clock{
+    border: 1px solid black;
+    border-radius: 20px;
+    width:fit-content;
+    padding: 80px;
+    background-color: black;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.image-container{
+    display:flex;
+    justify-content: center;
+}
+
+#a{
+    height:400px;
+    width:400px;
+    margin-bottom:30px;
+    border-radius: 10px;
+}
+
+.flex-between{
+    display: flex;
+    justify-content: space-between;
+}
+
+.arrow{
+    width: 50px;
+    cursor: pointer;
+}

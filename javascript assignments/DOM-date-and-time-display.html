@@ -1,0 +1,54 @@
+<html>
+	<head>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+	<body>
+		<h1>Digital Clock with date display</h1>
+		<div class="clock-container">
+			<div class="clock">
+				<div id="k">
+				</div>
+				<div id="d">
+				</div> 
+			</div>
+		</div>
+	</body>
+	<script>
+		var y=document.getElementById("d");
+		var j=document.getElementById("k");
+		function xyz(){
+			var m=new Date();
+			var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+			var days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+			var day=days[m.getDay()];
+			var date=m.getDate();
+			var month=months[m.getMonth()];
+			var year=m.getFullYear();
+			if(date>=0 && date<10){
+				date='0'+date;
+			}	
+			var u=(day+", "+date+" "+month+", "+year);
+			k.innerHTML=u;
+			var z=new Date();
+			var hours=z.getHours();
+			var minutes=z.getMinutes();
+			var seconds=z.getSeconds();
+				t=setTimeout(xyz,1000);
+				if(minutes>=0 && minutes<10){
+					minutes='0'+minutes;
+				}
+				if(seconds>=0 && seconds<10){
+					seconds='0'+seconds;
+				}
+				var o=(hours+":"+minutes+":"+seconds);
+				y.innerHTML=o;
+		}
+		xyz();
+	</script>
+</html>

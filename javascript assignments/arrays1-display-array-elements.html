@@ -6,25 +6,18 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <h2>Removing duplicate elements from an array</h2>
+        <h2>Displaying array elements</h2>
     </body>
-    <script>
-        var ar=[1,2,2,3,4,5,6,7,5,8,6];
+    <script>        
+        var ar=[11,12,13,14,15,16,17,18,19];
         document.write("The given array is ["+ar+"]<br><br>");
-        var br=[];
-        var k=0;
+        document.write("(a) From starting element to the last element<br>");
         for(i=0;i<=ar.length-1;i++){
-            c=0;
-            for(j=0;j<=br.length-1;j++){
-                if(ar[i]===br[j]){
-                    c++;
-                }
-            }
-            if(c===0){
-                br[k]=ar[i];
-                k++;
-            }
+            document.write(ar[i]+"<br>");
         }
-        document.write("After removing the duplicates, the new array is ["+br+"]<br><br>");
+        document.write("<br>(b) From last element to the starting element<br>");
+        for(j=ar.length-1;j>=0;j--){
+            document.write(ar[j]+"<br>");
+        }
     </script>
 </html>

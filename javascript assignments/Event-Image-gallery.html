@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+	</head>
+	<body>
+		<h1>Image gallery</h1>
+		<h3>Click on the left and right arrows to cycle through the images</h3>
+		<div class="image-container">
+			<div class="image-gallery">
+				<div><img id="a" src=""></div>
+				<div class="flex-between">
+					<img class="arrow" src="arrow-left.svg" onclick="previous()"/>
+					<img class="arrow" src="arrow-right.svg" onclick="next()"/>
+				</div>
+			</div>
+		</div>
+		<script>
+			var imagearray=[
+				"https://www.daysoftheyear.com/wp-content/uploads/chocolate-day1-scaled.jpg",
+				"https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/325466_1100-1100x628.jpg",
+				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKWnQFJxZiIUp3XCBpqTPfqzmHi96Qdwovdg&usqp=CAU",
+				"https://m.economictimes.com/thumb/height-450,width-600,imgsize-1016106,msid-68721417/nature1_gettyimages.jpg",
+				"https://images.indianexpress.com/2021/02/Green-solution.jpg"
+			];
+			var i=0;
+			var x=document.getElementById("a");
+			x.src=imagearray[0];
+		function next(){
+			if(i<imagearray.length-1){
+			i++;
+			x.src=imagearray[i];
+			}
+			else{
+			i=0;
+			x.src=imagearray[i];
+			}
+		}
+		function previous(){
+			if(i>0){
+			i--;
+			x.src=imagearray[i];
+			}
+			else{
+			i=imagearray.length-1;
+			x.src=imagearray[i];
+			}
+		}
+		</script>
+	</body>
+</html>
